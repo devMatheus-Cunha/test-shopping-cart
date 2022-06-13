@@ -16,5 +16,8 @@
     "@types/jest": "^27.5.1",
     "babel-jest": "^28.1.1",
     "jest": "^28.1.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
