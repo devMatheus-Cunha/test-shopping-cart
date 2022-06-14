@@ -74,6 +74,20 @@ describe('Cart', () => {
       expect(cart.checkout()).toMatchSnapshot();
     });
 
+    it('should return object with the total and the list of items when summary is called', () => {
+      cart.add({
+        product: productOne,
+        quantity: 2,
+      });
+      cart.add({
+        product: productTwo,
+        quantity: 5,
+      });
+
+      expect(cart.summary()).toMatchSnapshot();
+      expect(cart.getTotal()).toBeGreaterThan(0)
+    });
+
     it('should reset the cart  when checkout() is called', () => {
       cart.add({
         product: productTwo,
