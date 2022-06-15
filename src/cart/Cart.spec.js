@@ -114,5 +114,18 @@ describe('Cart', () => {
 
       expect(cart.getTotal().getAmount()).toEqual(252)
     });
+
+    it('should apply quantity for even quantities ', () => {
+      const condition = {
+        quantity: 2,
+      }
+
+      cart.add({
+        product: productOne,
+        condition,
+        quantity: 4
+      })
+      expect(cart.getTotal().getAmount()).toEqual(240)
+    });
   });
 });
