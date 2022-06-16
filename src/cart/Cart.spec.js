@@ -168,5 +168,23 @@ describe('Cart', () => {
       })
       expect(cart.getTotal().getAmount()).toEqual(360)
     });
+
+    it('should  receive two or more conditions and determine/apply the o best discount. First case', () => {
+      const conditionOne = {
+        percentage: 30, // 30%
+        minimum: 2
+      }
+
+      const conditionTwo = {
+        quantity: 2, // 40% & if the number is even 50%
+      }
+
+      cart.add({
+        product: productOne,
+        condition: [conditionOne, conditionTwo],
+        quantity: 5
+      })
+      expect(cart.getTotal().getAmount()).toEqual(360)
+    });
   });
 });
