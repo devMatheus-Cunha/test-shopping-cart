@@ -127,5 +127,18 @@ describe('Cart', () => {
       })
       expect(cart.getTotal().getAmount()).toEqual(240)
     });
+
+    it('should apply quantity discont for odd quantities', () => {
+      const condition = {
+        quantity: 2,
+      }
+
+      cart.add({
+        product: productOne,
+        condition,
+        quantity: 5
+      })
+      expect(cart.getTotal().getAmount()).toEqual(360)
+    });
   });
 });
