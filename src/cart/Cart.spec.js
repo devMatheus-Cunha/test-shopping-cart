@@ -74,7 +74,7 @@ describe('Cart', () => {
       expect(cart.checkout()).toMatchSnapshot();
     });
 
-    it('should return object with the total and the list of items when summary is called', () => {
+    it('should return an object with the total and the list of items when summary is called', () => {
       cart.add({
         product: productOne,
         quantity: 2,
@@ -86,6 +86,19 @@ describe('Cart', () => {
 
       expect(cart.summary()).toMatchSnapshot();
       expect(cart.getTotal().getAmount()).toBeGreaterThan(0)
+    });
+
+    it('should include formatted amout in the summary', () => {
+      cart.add({
+        product: productOne,
+        quantity: 2,
+      });
+      cart.add({
+        product: productTwo,
+        quantity: 5,
+      });
+
+      expect(cart.summary().formatted).toEqual('R$7.40');
     });
 
     it('should reset the cart  when checkout() is called', () => {
