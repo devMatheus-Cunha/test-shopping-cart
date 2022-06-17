@@ -17,7 +17,6 @@ const calculateQuantityDiscount = (amount, {
   condition,
   quantity
 }) => {
-  debugger
   const isEven = quantity % 2 === 0
 
   if (quantity > condition.quantity) {
